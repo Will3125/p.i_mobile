@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Capture</title>
+    
+        <style> body {
+            background-color: #2d0bc7; /* Cor de fundo escura */
+            color: #fff; /* Cor do texto branca */
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column; /* Adicionado para alinhar verticalmente */
+        }
+    
+        </style>
+</head>
+<body>
+    <div class="columns">
+        <div class="column">
+            <p><button type="button" onclick="getStream('video')">Tire a foto aqui</button></p>
+            <video controls autoplay style="height:180px; width: 240px;"></video>
+        </div>
+        
+    </div>
+
+    <script>
+        function getUserMedia(constraints) {
+            // if Promise-based API is available, use it
+            if (navigator.mediaDevices) {
+                return navigator.mediaDevices.getUserMedia(constraints);
+            }
+
+            // otherwise try falling back to old, possibly prefixed API...
+            var legacyApi = navigator.getUserMedia || navigator.webkitGetUserMedia ||
+                navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+            if (legacyApi) {
+                // ...and promisify it
+                return new Promise(function (resolve, reject) {
+                    legacyApi.bind(navigator)(constraints, resolve, reject);
+                });
+            }
+        }
+
+        function getStream(type) {
+            if (!navigator.mediaDevices && !navigator.getUserMedia && !navigator.webkitGetUserMedia &&
+                !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
+                alert('User Media API not supported.');
+                return;
+            }
+
+            var constraints = {};
+            constraints[type] = true;
+
+            getUserMedia(constraints)
+                .then(function (stream) {
+                    var mediaElement = type === 'video' ? document.querySelector('video') : document.querySelector('audio');
+                    mediaElement.srcObject = stream;
+                    mediaElement.play();
+                })
+                .catch(function (error) {
+                    console.error('Erro ao acessar a mídia:', error);
+                });
+        }
+    
+    </script>
+</body>
+</html>

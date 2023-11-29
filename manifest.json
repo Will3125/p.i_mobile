@@ -1,0 +1,34 @@
+{
+  "name": "Garrafas pet",
+  "short_name": "GaP",
+  "icons": [{
+    "src": "icones/196.png",
+    "type": "image/png",
+    "sizes": "196x196",
+    "purpose": "any"
+  },
+
+  {
+    "src": "icones/216.png",
+    "type": "image/png",
+    "sizes": "216x216"
+  },
+
+  {
+    "src": "icones/256.png",
+    "type": "image/png",
+    "sizes": "256x256"
+  },
+  
+  {
+    "src": "icones/512.png",
+    "type": "image/png",
+    "sizes": "512x512",
+    "purpose": "maskable"
+  }
+],
+"start_url": "index.html",
+"display": "standalone",
+"background_color": "#1f289b",
+"theme_color": "#19267f"
+}

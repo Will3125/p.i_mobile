@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <style>
+  body {
+    background-color: #2d0bc7;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center; 
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    margin-bottom: 20px; 
+    border: 1px solid #000; 
+}
+
+.image {
+    width: 200px;
+    height: auto;
+}
+
+.description {
+    width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.input-box {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.next-button, .button {
+    
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+}
+
+#Produtos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Produtos li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#Produtos .image {
+    margin-right: 20px;
+}
+
+.icone-clicavel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.icone-clicavel a {
+    text-decoration: none;
+}
+
+.icone-clicavel img {
+    width: 50px;
+    height: 50px;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.icone-clicavel img:hover {
+    transform: scale(1.1);
+}
+
+
+ </style>
+</head>
+
+<h1>Controle de Produção</h1>
+
+<body>
+        <div class="icone-clicavel">
+            <a href="camera.html">
+                <img src="Imagens\camera.png" alt="Descrição da imagem">
+            </a>
+        </div>
+        
+        <div id = "Produtos">
+            <script>
+                let divProdutos = document.querySelector("#Produtos")
+                fetch ("dados.json").then((response) => {
+                    response.json().then((dados) => {
+                    dados.Produtos.map((Produto) => {
+                        divProdutos.innerHTML += 
+                        `<li> Garrafas ${Produto.nome} 
+                            - Aprovados: ${Produto.Aprovados} 
+                            - Reaproveitados: ${Produto.Reaproveitados} 
+                            - Reprovados: ${Produto.Reprovados} 
+                            - <img src = "${Produto.imagem}" class = "image" > </li>`;
+    
+    
+                    }) 
+                    })
+                })
+            </script>
+    </div>  
+        
+    
+</body>
+</html>

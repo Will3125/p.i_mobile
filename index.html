@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="##19267f"/>
+   <style>
+     body {
+            background-color: #2d0bc7; /* Cor de fundo escura */
+            color: #fff; /* Cor do texto branca */
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #333; /* Cor do fundo do contêiner */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #000; /* Cor da borda preta */
+            border-radius: 4px;
+            background-color: #333; /* Cor de fundo da caixa de entrada */
+            color: #fff; /* Cor do texto branco */
+        }
+
+        .login-button {
+            background-color: #007bff; /* Cor do botão azul */
+            color: #fff; /* Cor do texto branco */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3; /* Cor do botão azul escuro ao passar o mouse */
+        }
+
+        .forgot-password {
+            color: #888; /* Cor do texto esmaecido */
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .forgot-password:hover {
+            color: #bbb; /* Cor do texto esmaecido ao passar o mouse */
+        }
+  
+   </style>
+    
+</head>
+<body>
+
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form" action="entrar.html" method="post" onsubmit="return validateLogin()">
+            <div class="input-group">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+
+        <a href="#" class="forgot-password">Esqueci minha senha</a>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Verificar se as credenciais são válidas
+            if (username === "natalia" && password === "123456") {
+                alert("Login bem-sucedido!");
+                // Redirecionar para a página "entrar.html" após o login bem-sucedido
+                window.location.href = "entrar.html";
+                return false; // Impedir o envio do formulário
+            } else {
+                alert("Credenciais inválidas. Tente novamente.");
+                return false; // Impedir o envio do formulário
+            }
+        }
+    </script>
+
+    <script>
+        let newWorker;
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js').then(reg => {
+                reg.addEventListener('updatefound', () => {
+                    newWorker = reg.installing;
+                });
+            });
+            let refreshing;
+            navigator.serviceWorker.addEventListener('controllerchange', function () {
+                if (refreshing) return;
+                window.location.reload();
+                refreshing = true;
+            });
+        }
+    </script>
+  
+</body>
+</html>
+

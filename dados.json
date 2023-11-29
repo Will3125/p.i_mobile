@@ -1,0 +1,34 @@
+{
+    "Produtos": [ { 
+    
+    "nome":"Dolly",
+    "Aprovados": "21",
+    "Reaproveitados": "15",
+    "Reprovados": "4",
+    "imagem":"Imagens/dolly.jpg"
+    },
+    { 
+    
+    "nome": "Frevo",
+    "Aprovados": "21",
+    "Reaproveitados": "13",
+    "Reprovados": "5",
+    "imagem":"Imagens/frevo.png"
+    },
+    { 
+    
+    "nome": "It",
+    "Aprovados": "20",
+    "Reaproveitados": "16",
+    "Reprovados": "3",
+    "imagem":"Imagens/it.jpg"
+    },
+    { 
+    
+    "nome": "simba",
+    "Aprovados": "21",
+    "Reaproveitados": "11",
+    "Reprovados": "6",
+    "imagem":"Imagens/simba.jpg"
+    } ]
+    }
